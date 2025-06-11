@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
+import colors from 'tailwindcss/colors';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -24,6 +25,7 @@ interface Boid {
 // Configurações da simulação
 interface SimulationConfig {
   boidCount: number;
+  boidSize: number;
   maxSpeed: number;
   separationRadius: number;
   alignmentRadius: number;
@@ -42,7 +44,8 @@ interface VisualizationConfig {
 }
 
 const DEFAULT_CONFIG: SimulationConfig = {
-  boidCount: 50,
+  boidCount: 100,
+  boidSize: 24,
   maxSpeed: 2,
   separationRadius: 30,
   alignmentRadius: 50,
@@ -66,7 +69,7 @@ function App() {
   const selectedBoidRef = useRef<Boid | null>(null);
   const [config, setConfig] = useState<SimulationConfig>(DEFAULT_CONFIG);
   const [visualization, setVisualization] = useState<VisualizationConfig>(DEFAULT_VISUALIZATION);
-  const [isRunning, setIsRunning] = useState(false);
+  const [isRunning, setIsRunning] = useState(true);
   const windowSize = useWindowSize();
 
   // Função para calcular distância entre dois pontos
@@ -235,7 +238,7 @@ function App() {
 
     // Visualizar direção
     if (visualization.showDirection) {
-      ctx.strokeStyle = '#00ff00';
+      ctx.strokeStyle = colors.sky[600];
       ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.moveTo(selectedBoid.x, selectedBoid.y);
@@ -248,7 +251,7 @@ function App() {
 
     // Visualizar zona de visão
     if (visualization.showVisionZone) {
-      ctx.strokeStyle = '#ffff00';
+      ctx.strokeStyle = colors.amber[600];
       ctx.lineWidth = 2;
       ctx.setLineDash([5, 5]);
       ctx.beginPath();
@@ -260,7 +263,7 @@ function App() {
     // Visualizar coesão
     if (visualization.showCohesion) {
       const cohesionResult = cohesion(selectedBoid, boids);
-      ctx.strokeStyle = '#00ffff';
+      ctx.strokeStyle = colors.sky[600];
       ctx.lineWidth = 1;
       cohesionResult.neighbors.forEach(neighbor => {
         ctx.beginPath();
@@ -274,7 +277,7 @@ function App() {
     if (visualization.showSeparation) {
       const separationForce = separate(selectedBoid, boids);
       if (separationForce.x !== 0 || separationForce.y !== 0) {
-        ctx.strokeStyle = '#ff0000';
+        ctx.strokeStyle = colors.rose[600];
         ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(selectedBoid.x, selectedBoid.y);
@@ -308,14 +311,16 @@ function App() {
       ctx.rotate(angle);
 
       // Cor especial para boid selecionado
-      ctx.fillStyle = isSelected ? '#0066ff' : (color === '#ffffff' ? '#ffffff' : color);
-      ctx.strokeStyle = isSelected ? '#ffffff' : '#ffffff';
+      ctx.fillStyle = isSelected ? colors.sky[600] : (color === '#ffffff' ? '#ffffff' : color);
+      ctx.strokeStyle = colors.neutral[600];
       ctx.lineWidth = isSelected ? 2 : 1;
 
+      const triangleSize = config.boidSize;
+
       ctx.beginPath();
-      ctx.moveTo(0, -8);
-      ctx.lineTo(-6, 6);
-      ctx.lineTo(6, 6);
+      ctx.moveTo(0, -triangleSize / 2);
+      ctx.lineTo(-triangleSize / 2, triangleSize / 2);
+      ctx.lineTo(triangleSize / 2, triangleSize / 2);
       ctx.closePath();
 
       ctx.fill();
@@ -327,8 +332,25 @@ function App() {
       // Limpar canvas
       const width = windowSize.width;
       const height = windowSize.height;
-      ctx.fillStyle = 'white'; // Cor de fundo
+      ctx.fillStyle = colors.neutral[100]; // Cor de fundo
       ctx.fillRect(0, 0, width, height);
+
+      // desenha um grid de linhas horizontais e verticais
+      ctx.strokeStyle = colors.neutral[300];
+      ctx.lineWidth = 0.5;
+      const squareSize = 25;
+      for (let x = 0; x < width; x += squareSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += squareSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
 
       const boids = boidsRef.current;
       const selectedBoid = selectedBoidRef.current;
@@ -545,10 +567,21 @@ function App() {
                     <Label>Quantidade de Boids: {config.boidCount}</Label>
                     <Slider
                       min={10}
-                      max={150}
+                      max={200}
                       step={10}
                       value={[config.boidCount]}
                       onValueChange={(value) => updateConfig('boidCount', value[0])}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label>Tamanho do Boid: {config.boidSize}px</Label>
+                    <Slider
+                      min={5}
+                      max={30}
+                      step={1}
+                      value={[config.boidSize]}
+                      onValueChange={(value) => updateConfig('boidSize', value[0])}
                     />
                   </div>
 

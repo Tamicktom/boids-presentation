@@ -41,6 +41,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --square-pattern: var(--square-pattern);
+  --square-pattern-size: var(--square-pattern-size);
 }
 
 :root {
@@ -76,6 +79,11 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.606 0.25 292.717);
+
+  --square-pattern: linear-gradient(35deg,hsla(0, 0%, 7%, 1),80%,hsla(0, 0%, 7%, 0.6)),
+		linear-gradient(transparent calc(50% - 1px), #fff 1px, transparent calc(50% + 1px) 100%),
+		linear-gradient(to right, transparent calc(50% - 1px), #fff 1px, transparent calc(50% + 1px) 100%);
+  --square-pattern-size: 40px 40px, 40px 40px, 40px 40px;
 }
 
 .dark {

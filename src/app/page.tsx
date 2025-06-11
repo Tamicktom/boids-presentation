@@ -12,15 +12,15 @@ export default function Home() {
   return (
     <RevealProvider>
       <Section>
-        <div className="flex flex-col items-center justify-center relative">
-          <div className="bg-gradient-to-br from-purple-500 via-rose-500 to-blue-500 size-[calc(100%_+_32px)] absolute -left-4 -top-4 rounded-2xl blur-2xl opacity-20" />
-          <div className="flex flex-col items-center justify-center z-10 bg-background p-8 rounded-2xl border">
-            <h1 className="text-7xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-32">
-              Algoritmo Boids
-            </h1>
-            <p className="text-2xl text-muted-foreground">Simulação de Comportamento Coletivo</p>
-          </div>
+        {/* <div className="flex flex-col items-center justify-center relative"> */}
+        {/* <div className="bg-gradient-to-br from-purple-500 via-rose-500 to-blue-500 size-[calc(100%_+_32px)] absolute -left-4 -top-4 rounded-2xl blur-2xl opacity-20" /> */}
+        <div className="flex flex-col items-center justify-center z-10 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+          <h1 className="text-7xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-32">
+            Algoritmo Boids
+          </h1>
+          <p className="text-2xl text-muted-foreground">Simulação de Comportamento Coletivo</p>
         </div>
+        {/* </div> */}
       </Section>
 
       <section>
