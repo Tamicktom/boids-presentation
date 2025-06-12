@@ -48,7 +48,7 @@ export function RevealProvider(props: RevealProviderProps) {
     // our parent element. Make sure the parent is not 0-height.
     <div
       ref={deckDivRef}
-      className="reveal bg-transparent"
+      className="reveal w-full max-w-7xl mx-auto"
       style={{
         width: "100%",
         height: "100%",
