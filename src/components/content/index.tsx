@@ -305,11 +305,19 @@ FUNÇÃO atualizar_boid(boid, lista_boids, configurações):
           <Section>
             <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
               <h3 className="text-3xl font-bold">Interações e Agentes</h3>
+              <ul className="list-disc pl-8 text-left">
+                <li className="my-2 text-base">Algoritmo descentralizado</li>
+              </ul>
             </div>
           </Section>
           <Section>
             <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
               <h3 className="text-3xl font-bold">Desempenho</h3>
+              <ul className="list-disc pl-8 text-left">
+                <li className="my-2 text-base">
+                  <InlineMath math="O(n^2)" /> para <InlineMath math="n" /> boids
+                </li>
+              </ul>
             </div>
           </Section>
           <Section>
@@ -326,7 +334,7 @@ FUNÇÃO atualizar_boid(boid, lista_boids, configurações):
 
         <section>
           <Section>
-            <div className=";bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
               <h2 className="text-7xl font-bold text-center">Outros modelos/Variações</h2>
               <ul className="list-disc py-8 text-left">
                 <li className="my-2 text-base">
@@ -401,6 +409,22 @@ FUNÇÃO atualizar_boid(boid, lista_boids, configurações):
               <h3 className="text-3xl font-bold">Robótica de Enxame</h3>
               <h3 className="text-3xl font-bold">Biologia e Ecologia Computacional</h3>
             </div>
+          </Section>
+        </section>
+
+        <section>
+          <Section>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h1 className="text-7xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-32">
+                Fim
+              </h1>
+            </div>
+          </Section>
+        </section>
+
+        <section>
+          <Section>
+
           </Section>
         </section>
       </RevealProvider>
