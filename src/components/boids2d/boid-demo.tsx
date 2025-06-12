@@ -362,7 +362,7 @@ function BoidDemo({
               boid.y,
               boid.x + Math.cos(separationAngle) * lineLength,
               boid.y + Math.sin(separationAngle) * lineLength,
-              '#ff0000',
+              colors.red[500],
               3
             );
           }
@@ -380,9 +380,9 @@ function BoidDemo({
             avgX /= count;
             avgY /= count;
             // Desenhar ponto de coesão
-            drawPoint(avgX, avgY, '#ffff00');
+            drawPoint(avgX, avgY, colors.amber[500]);
             // Linha para o centro
-            drawLine(boid.x, boid.y, avgX, avgY, '#00ffff', 1);
+            drawLine(boid.x, boid.y, avgX, avgY, colors.amber[300], 1);
           }
         }
       });

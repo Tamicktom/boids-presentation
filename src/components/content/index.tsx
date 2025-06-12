@@ -42,7 +42,7 @@ export function Content() {
         <section>
           <Section>
             <div className="flex flex-col items-center justify-center z-10 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
-              <h2 className="text-7xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-32">
+              <h2 className="text-7xl font-bold text-center">
                 História
               </h2>
             </div>
@@ -82,7 +82,7 @@ export function Content() {
         <section>
           <Section>
             <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
-              <h2 className="text-7xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-32">Princípios Fundamentais</h2>
+              <h2 className="text-7xl font-bold text-center">Princípios Fundamentais</h2>
             </div>
           </Section>
           <Section>
@@ -166,41 +166,122 @@ export function Content() {
             </div>
           </Section>
         </section>
+
         <section>
           <Section>
-            <h2>
-              Descrição Matemática
-            </h2>
+            <div className="flex flex-col bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h2 className="text-7xl font-bold text-center">Arquitetura do Algoritmo</h2>
+            </div>
           </Section>
           <Section>
-            <BlockMath math="J(\theta_0,\theta_1) = \sum_{i = 0}" />
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Loop Principal</h3>
+              <pre>
+                <code>
+                  
+                </code>
+              </pre>
+            </div>
+          </Section>
+          <Section>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Interações e Agentes</h3>
+            </div>
+          </Section>
+          <Section>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Desempenho</h3>
+            </div>
+          </Section>
+          <Section>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Regras adicionais</h3>
+              <ul>
+                <li>Evitar Obstáculos</li>
+                <li>Confinamento do Espaço</li>
+                <li>Objetivo (Goal Seeking)</li>
+              </ul>
+            </div>
           </Section>
         </section>
 
         <section>
           <Section>
-            <h2>Arquitetura do Algoritmo</h2>
-          </Section>
-          <Section>
-
+            <div className=";bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h2 className="text-7xl font-bold text-center">Outros modelos / Variações</h2>
+              <ul>
+                <li>
+                  Modelo de Vicsek: <br />
+                </li>
+                <li>
+                  Modelo de Couzin: <br />
+                </li>
+                <li>
+                  Modelo Cucker-Smale <br />
+                </li>
+                <li>
+                  Sistemas de Forças em Multidões <br />
+                </li>
+              </ul>
+            </div>
           </Section>
         </section>
 
         <section>
           <Section>
-            <h2>Comparações com Outras Abordagens de Comportamento Coletivo</h2>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h2 className="text-7xl font-bold text-center">Aplicações Práticas e Variações do Boids</h2>
+            </div>
           </Section>
           <Section>
-
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Animação e Cinema (VFX)</h3>
+              <ul>
+                <li>
+                  <Link href="https://www.youtube.com/watch?v=pbFEQv259yw" target="_blank" rel="noopener noreferrer">
+                    Stanley and Stella in: Breaking the Ice
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://www.youtube.com/watch?v=A8Xt3DlrwhY" target="_blank" rel="noopener noreferrer">
+                    Batman Returns (1992)
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </Section>
-        </section>
-
-        <section>
           <Section>
-            <h2>Aplicações Práticas e Variações do Boids</h2>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Jogos Eletrônicos</h3>
+              <ul>
+                <li>
+                  Half-life
+                  <NextImage
+                    src="/half-life.gif"
+                    alt="Half-life - Jogo de tiro em primeira pessoa com comportamento de inimigos"
+                    width={600}
+                    height={400}
+                    className="size-full object-cover rounded-2xl mt-2"
+                  />
+                </li>
+                <li>
+                  ABZÛ
+                  <NextImage
+                    src="/abzu.gif"
+                    alt="ABZÛ - Jogo de exploração subaquática com comportamento de peixes"
+                    width={600}
+                    height={400}
+                    className="size-full object-cover rounded-2xl mt-2"
+                  />
+                </li>
+              </ul>
+            </div>
           </Section>
           <Section>
-
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h3>Robótica de Enxame</h3>
+              <h3>Biologia e Ecologia Computacional</h3>
+            </div>
           </Section>
         </section>
       </RevealProvider>
