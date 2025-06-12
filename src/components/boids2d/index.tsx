@@ -44,7 +44,7 @@ interface VisualizationConfig {
 }
 
 const DEFAULT_CONFIG: SimulationConfig = {
-  boidCount: 100,
+  boidCount: 50,
   boidSize: 24,
   maxSpeed: 2,
   separationRadius: 30,

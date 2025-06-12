@@ -2,7 +2,6 @@
 //* Libraries imports
 import React from "react";
 import Reveal from "reveal.js";
-// import { KaTeX } from "reveal.js/plugin/math/math";
 
 import "reveal.js/dist/reveal.css";
 // import "reveal.js/dist/theme/white.css";
@@ -22,7 +21,6 @@ export function RevealProvider(props: RevealProviderProps) {
     deckRef.current = new Reveal(deckDivRef.current!, {
       transition: "slide",
       // other config options
-      // plugins: [KaTeX],
       // embedded: true,
       disableLayout: true, // Disable layout to prevent resizing issues
     });
