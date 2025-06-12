@@ -2,6 +2,7 @@
 //* Libraries imports
 import React from "react";
 import Reveal from "reveal.js";
+import Highlight from "reveal.js/plugin/highlight/highlight";
 
 import "reveal.js/dist/reveal.css";
 // import "reveal.js/dist/theme/white.css";
@@ -10,7 +11,7 @@ type RevealProviderProps = {
   children?: React.ReactNode;
 };
 
-export function RevealProvider(props: RevealProviderProps) {
+export default function RevealProvider(props: RevealProviderProps) {
   const deckDivRef = React.useRef<HTMLDivElement>(null); // reference to deck container div
   const deckRef = React.useRef<Reveal.Api | null>(null); // reference to deck reveal instance
 
@@ -20,6 +21,7 @@ export function RevealProvider(props: RevealProviderProps) {
 
     deckRef.current = new Reveal(deckDivRef.current!, {
       transition: "slide",
+      plugins: [Highlight],
       // other config options
       // embedded: true,
       disableLayout: true, // Disable layout to prevent resizing issues
