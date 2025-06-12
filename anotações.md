@@ -1,4 +1,14 @@
+- Alinhamento faz eles irem na mesma direção.
+- Coesão irem para o centro.
+- Separação evita colisões.
+
 ## Contexto histórico
+
+Craig Reynolds queria simular movimentos realistas de bandos de aves ou cardumes de peixes em animações digitais — algo que fosse mais natural do que simplesmente programar rotas pré-definidas.
+
+Na época, os filmes e animações usavam técnicas muito manuais e rígidas para simular comportamentos em grupo, o que levava a movimentos robóticos ou irreais.
+
+Reynolds buscava uma alternativa emergente e procedural: gerar comportamentos coletivos de forma autônoma, usando regras simples de interação local entre agentes.
 
 Boids é um algoritmo que busca por meio de regras básicas, reproduzir o comportamento sincronizado de grupos de animais. Por exemplo, manadas de animais terrestres, cardumes de peixes, bando de pássaros e etc.
 
@@ -60,7 +70,9 @@ https://opensteer.sourceforge.net/doc.html#:~:text=Boids%3A%20200%20simulated%20
 
 Além das três regras básicas, é comum incorporar comportamentos extras no loop principal
 
-- Evitar Obstáculos: Cada boid
+- Evitar Obstáculos: Cada boid pode detectar colisões iminentes e gerar um vetor de desvio.
+
+- Confinamento do espaço: Em simulações limitadas, aplica-se uma força de "contenção" quando um boid se aproxima da fronteira
 
 ## Aplicações práticas
 
