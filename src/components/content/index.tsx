@@ -16,6 +16,9 @@ import { cn } from "@/lib/utils";
 const Boids = dynamic(() => import("@/components/boids2d"), {
   ssr: false,
 });
+const BoidDemo = dynamic(() => import("@/components/boids2d/boid-demo"), {
+  ssr: false,
+});
 
 export function Content() {
   return (
@@ -47,7 +50,7 @@ export function Content() {
 
           <Section>
             <div className="w-full grid grid-cols-6 items-center justify-center gap-4 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
-              <div className="flex justify-center w-full col-span-2">
+              <div className="flex flex-col justify-center w-full col-span-2 border rounded-2xl gap-2 p-4">
                 <Link href="https://www.youtube.com/watch?v=rqP_c5zm89Q" target="_blank" rel="noopener noreferrer">
                   <NextImage
                     src="/craig-reynolds.png"
@@ -57,7 +60,6 @@ export function Content() {
                     className="size-full object-cover rounded-2xl"
                   />
                 </Link>
-
 
                 <span>
                   Craig Reynolds em uma entrevista de 2015
@@ -79,21 +81,88 @@ export function Content() {
 
         <section>
           <Section>
-            <h2>Princípios Fundamentais</h2>
+            <div className="bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <h2 className="text-7xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-32">Princípios Fundamentais</h2>
+            </div>
           </Section>
           <Section>
-            <div>
-              <ul>
-                <li>
-                  Separação (evitar colisões entre boids)
-                </li>
-                <li>
-                  Alinhamento (ajustar direção com vizinhos)
-                </li>
-                <li>
-                  Coesão (mover em direção ao centro do grupo)
-                </li>
-              </ul>
+            <div className="grid grid-cols-3 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              {/* Demo 1: Movimento Livre */}
+              <div className="size-96 overflow-hidden rounded-2xl border col-span-1">
+                <BoidDemo
+                  demoType="none"
+                />
+              </div>
+              <div className="col-span-2 flex flex-col justify-start gap-4 pl-4">
+                <h3 className="text-3xl font-bold">Movimento</h3>
+                <p className="w-full text-left text-lg">
+                  Um boid sem nenhuma regra aplicada se move em linha reta com velocidade constante. <br />
+                  Este é o comportamento base antes de aplicarmos qualquer algoritmo de inteligência de enxame.
+                </p>
+              </div>
+            </div>
+          </Section>
+          <Section>
+            <div className="grid grid-cols-3 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              {/* Demo 2: Alinhamento */}
+              <div className="size-96 overflow-hidden rounded-2xl border col-span-1">
+                <BoidDemo
+                  demoType="alignment"
+                />
+              </div>
+              <div className="col-span-2 flex flex-col justify-start gap-4 pl-4">
+                <h3 className="text-3xl font-bold">Alinhamento</h3>
+                <p className="w-full text-left text-lg">
+                  Boids se alinham com a direção dos vizinhos próximos. As linhas verdes mostram a direção de cada boid, demonstrando como eles gradualmente sincronizam seus movimentos.
+                </p>
+              </div>
+            </div>
+          </Section>
+          <Section>
+            <div className="grid grid-cols-3 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              {/* Demo 3: Separação */}
+              <div className="size-96 overflow-hidden rounded-2xl border col-span-1">
+                <BoidDemo
+                  demoType="separation"
+                />
+              </div>
+              <div className="col-span-2 flex flex-col justify-start gap-4 pl-4">
+                <h3 className="text-3xl font-bold">Separação</h3>
+                <p className="w-full text-left text-lg">
+                  Boids evitam colisões mantendo distância uns dos outros. As linhas vermelhas mostram a força de separação que os afasta quando ficam muito próximos.
+                </p>
+              </div>
+            </div>
+          </Section>
+          <Section>
+            <div className="grid grid-cols-3 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              {/* Demo 4: Coesão */}
+              <div className="size-96 overflow-hidden rounded-2xl border col-span-1">
+                <BoidDemo
+                  demoType="cohesion"
+                />
+              </div>
+              <div className="col-span-2 flex flex-col justify-start gap-4 pl-4">
+                <h3 className="text-3xl font-bold">Coesão</h3>
+                <p className="w-full text-left text-lg">
+                  Boids se movem em direção ao centro do grupo local. Os pontos amarelos mostram o centro de massa dos vizinhos, e as linhas ciano indicam a atração para esse ponto.
+                </p>
+              </div>
+            </div>
+          </Section>
+          <Section>
+            <div className="grid grid-cols-3 bg-white/50 backdrop-blur-[4px] p-8 rounded-2xl border">
+              <div className="size-96 overflow-hidden rounded-2xl border col-span-1">
+                <BoidDemo
+                  demoType="all"
+                />
+              </div>
+              <div className="col-span-2 flex flex-col justify-start gap-4 pl-4">
+                <h3 className="text-3xl font-bold">Comportamento emergente</h3>
+                <p className="w-full text-left text-lg">
+                  Quando todas as três regras são combinadas, emerge o comportamento complexo de enxame. A interação entre separação, alinhamento e coesão cria padrões naturais de movimento em grupo.
+                </p>
+              </div>
             </div>
           </Section>
         </section>

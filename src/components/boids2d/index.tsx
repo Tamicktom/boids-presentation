@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import colors from 'tailwindcss/colors';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -63,13 +63,14 @@ const DEFAULT_VISUALIZATION: VisualizationConfig = {
 };
 
 function App() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>(null);
-  const boidsRef = useRef<Boid[]>([]);
-  const selectedBoidRef = useRef<Boid | null>(null);
-  const [config, setConfig] = useState<SimulationConfig>(DEFAULT_CONFIG);
-  const [visualization, setVisualization] = useState<VisualizationConfig>(DEFAULT_VISUALIZATION);
-  const [isRunning, setIsRunning] = useState(true);
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
+  const animationRef = React.useRef<number>(null);
+  const boidsRef = React.useRef<Boid[]>([]);
+  const selectedBoidRef = React.useRef<Boid | null>(null);
+  const [config, setConfig] = React.useState<SimulationConfig>(DEFAULT_CONFIG);
+  const [visualization, setVisualization] = React.useState<VisualizationConfig>(DEFAULT_VISUALIZATION);
+  const [isRunning, setIsRunning] = React.useState(true);
+  const [overlayVisible, setOverlayVisible] = React.useState(false);
   const windowSize = useWindowSize();
 
   // Função para calcular distância entre dois pontos
@@ -290,11 +291,11 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     boidsRef.current = createBoids(config.boidCount);
   }, [config.boidCount]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -433,16 +434,39 @@ function App() {
     <div className="relative">
       <canvas
         ref={canvasRef}
-        className='bg-transparent'
+        className='bg-transparent z-0'
         width={windowSize.width}
         height={windowSize.height}
       />
 
+      {
+        overlayVisible &&
+        <div
+          className='absolute size-full top-0 left-0 z-10 pointer-events-none bg-white/50 backdrop-blur-sm'
+        />
+      }
+
       {/* Painel de Controles */}
-      <div className="absolute top-4 left-4">
+      <div className="absolute top-4 left-4 z-20 gap-2 flex">
         <Sheet>
+          <Button
+            id="overlay-button"
+            type="button"
+            variant="outline"
+            size="icon"
+            className="bg-white/90 backdrop-blur-sm"
+            onClick={() => setOverlayVisible(!overlayVisible)}
+          >
+            <Eye className="size-4" />
+          </Button>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="bg-white/90 backdrop-blur-sm">
+            <Button
+              id="settings-button"
+              type="button"
+              variant="outline"
+              size="icon"
+              className="bg-white/90 backdrop-blur-sm"
+            >
               <Settings className="size-4" />
             </Button>
           </SheetTrigger>
