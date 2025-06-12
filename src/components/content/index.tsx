@@ -2,6 +2,9 @@
 //* Libraries imports
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
+import { BlockMath } from 'react-katex';
+
+import 'katex/dist/katex.min.css';
 
 //* Components imports
 import { RevealProvider } from "@/components/providers/reveal";
@@ -95,7 +98,7 @@ export function Content() {
 
       {/* </section> */}
       <section data-markdown>
-        {"$$ J(\theta_0,\theta_1) = \sum_{i = 0} $$"}
+        <BlockMath math="J(\theta_0,\theta_1) = \sum_{i = 0}" />
       </section>
 
       <section>
